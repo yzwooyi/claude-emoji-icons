@@ -33,7 +33,11 @@ claude plugin install emoji-icons@jazper-share --scope user
 
 ## 让 Claude 用这些 emoji
 
-mod 只负责「换图标」，Claude 平时不会主动在段首用这些 emoji。把下面这段加进 `~/.claude/CLAUDE.md`：
+mod 只负责「换图标」，Claude 平时不会主动在段首用这些 emoji。插件已自带两个配合的回复风格，装好后在 Claude Code 里选用：终端里打开 `/config`，改 Output style；桌面版在设置里的输出风格里选。选 `emoji-icons-zh`（中文）或 `emoji-icons-en`（英文）即可。
+
+### 不想换风格时的备选
+
+只想让 Claude 用这 12 个 emoji、不换回复风格的话，把下面这段加进 `~/.claude/CLAUDE.md`：
 
 ```markdown
 ## 回复里的重点标记
