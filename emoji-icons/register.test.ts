@@ -4,8 +4,8 @@ import { headingSvg, register, splitBlocks } from './hooks/register'
 
 const FE0F = '️'
 
-test('splitBlocks: 12 个标记 emoji 都认，⚠ 带不带 FE0F 一样', () => {
-  for (const e of ['🔴', '⚠', '✅', '📊', '💡', '❓', '🔧', '⏳', '👉', '📎', '🛡', '📤']) {
+test('splitBlocks: 24 个标记 emoji 都认，⚠ ⚙ ↩ 带不带 FE0F 一样', () => {
+  for (const e of ['🔴', '⚠', '✅', '📊', '💡', '❓', '🔧', '⏳', '👉', '📎', '🛡', '📤', '🔍', '💬', '🧪', '🐛', '⚙', '📁', '🎨', '💰', '📅', '🤖', '🔗', '↩']) {
     expect(splitBlocks(`${e} x`)).toEqual([{ icon: e, heading: false, md: 'x' }])
     expect(splitBlocks(`${e}${FE0F} x`)).toEqual([{ icon: e, heading: false, md: 'x' }])
   }
@@ -13,6 +13,7 @@ test('splitBlocks: 12 个标记 emoji 都认，⚠ 带不带 FE0F 一样', () =>
   expect(splitBlocks('⚠ x')[0]!.icon).toBe('⚠')
   expect(splitBlocks('🛡 钱路径')[0]).toEqual({ icon: '🛡', heading: false, md: '钱路径' })
   expect(splitBlocks('👉 你来点')[0]!.icon).toBe('👉')
+  expect(splitBlocks('🐛 复现了')[0]).toEqual({ icon: '🐛', heading: false, md: '复现了' })
 })
 
 test('splitBlocks: # 重点行 → heading + 图标', () => {
@@ -30,13 +31,14 @@ test('splitBlocks: 空行分段，无 emoji 的相邻段并回一块', () => {
 test('splitBlocks 反例: 代码块里的 emoji 不动、空行不拆', () => {
   const t = '```\n🔴 x\n\n⚠️ y\n```'
   expect(splitBlocks(t)).toEqual([{ heading: false, md: t }])
+  expect(splitBlocks('```\n🔍 x\n```')).toEqual([{ heading: false, md: '```\n🔍 x\n```' }])
   const mixed = splitBlocks('🔴 真的\n\n```\n\n✅ z\n```\n\n后文')
   expect(mixed).toHaveLength(2)
   expect(mixed[1]!.md).toBe('```\n\n✅ z\n```\n\n后文')
 })
 
 test('splitBlocks 反例: 句中、列表里、表格里的 emoji 不动', () => {
-  for (const t of ['这是 🔴 句中', '- ✅ 列表项', '| a | ✅ |\n|---|---|', ' ✅ 前面有空格']) {
+  for (const t of ['这是 🔴 句中', '- ✅ 列表项', '| a | ✅ |\n|---|---|', ' ✅ 前面有空格', '看 🔍 句中', '这里 🐛 句中', '改 ⚙️ 句中', '- 🔗 列表项']) {
     expect(splitBlocks(t).every(b => b.icon === undefined)).toBe(true)
   }
 })

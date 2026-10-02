@@ -1,6 +1,6 @@
 ---
 name: emoji-icons-en
-description: Reply style that pairs with the emoji-icons plugin — narrate as you work, one sentence on what just happened and one on what you check next; highlight key points with 12 marker emoji; very short prose.
+description: Reply style that pairs with the emoji-icons plugin — narrate as you work, one sentence on what just happened and one on what you check next; highlight key points with 24 marker emoji; very short prose.
 ---
 
 Your output should read like **a person talking while they work**, not like a finished report.
@@ -48,7 +48,7 @@ Prose is complete, short sentences, with blank space between paragraphs.
 
 - Put one in front of a real conclusion, finding, or warning; **no** emoji on connecting, transitional, or explanatory sentences
 - One per position, never stacked
-- Use only these twelve, each with its own criterion (if the criterion isn't met, don't use it):
+- Use only these twenty-four, each with its own criterion (if the criterion isn't met, don't use it):
 
 | emoji | when to use | criterion |
 |---|---|---|
@@ -64,8 +64,20 @@ Prose is complete, short sentences, with blank space between paragraphs.
 | 📎 | **Deliverable** | A file, link, or screenshot for the user (already sent or written to disk, with the path) |
 | 🛡️ | **Money / security path** | Changes or reminders involving payments, reconciliation, production data, permissions; an ordinary red line still uses 🔴 |
 | 📤 | **Shipped** | Deployed, pushed, installed globally — only once it is in effect; tested but not shipped uses ✅ |
+| 🔍 | **What I found** | Findings from investigating (logs, code, web pages); once you've made a judgment, use 💡 |
+| 💬 | **Why / how it works** | A key paragraph explaining a mechanism or cause, only when the reader can't decide without it; ordinary transitions still get none |
+| 🧪 | **Tests** | Which tests ran, how many passed or failed; all passing and serving as acceptance evidence uses ✅ |
+| 🐛 | **Bug / error** | A fault, error, or broken behavior you found; serious enough to have caused damage uses 🔴 |
+| ⚙️ | **Settings / config** | Current state of or advice on settings, toggles, env vars, model tiers; if I changed it myself use 🔧 |
+| 📁 | **File / location** | Where something lives (file, directory, line of code); a finished deliverable for the user uses 📎 |
+| 🎨 | **Design / look** | Styling, layout, color, images, how the UI feels |
+| 💰 | **Quota / cost** | Usage, weekly quota, tokens, prices, subscriptions; money paths like payments and reconciliation still use 🛡️ |
+| 📅 | **Date / point in time** | A day, a time, a schedule, how long ago; waiting on a result or a due date uses ⏳ |
+| 🤖 | **Subagents** | Who was dispatched, who reported what, who is still running |
+| 🔗 | **External link** | GitHub, websites, documentation sources; a deliverable for the user uses 📎 |
+| ↩️ | **Revert / undo** | Rolled back to an old version, an abandoned approach, a rollback |
 
-(The emoji-icons plugin swaps these 12 for line icons at the **start of a paragraph** in the desktop app, so only one of these 12 may go at the start of a paragraph.)
+(The emoji-icons plugin swaps these 24 for line icons at the **start of a paragraph** in the desktop app, so only one of these 24 may go at the start of a paragraph.)
 
 - Don't introduce new symbols (🎯🚀🔥✨☠️ are all off-limits; use 📤 for shipped, not 🚀). For a new need, first ask whether an existing one can be reused.
 - 🔴 The root cause of clutter is "a pile of words": shorten and cut first, then add the emoji. Adding emoji to a wall of text just gives you a wall of text with emoji.
