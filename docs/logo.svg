@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="541.8" height="92" viewBox="-3 -3 270.9 46" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<title>Glance</title>
+<g transform="translate(-3.88 -4.11) scale(2.22)" stroke-width="1.8">
+<circle cx="5.5" cy="6" r="2.75" stroke="#e5b84a"/>
+<path d="M12 6h9.5" stroke="#ececec"/>
+<path d="M3 12.5h18.5M3 18.5h12" stroke="#6e7681"/>
+</g>
+<path d="M100.86 6.62A20 20 0 1 0 106 21H93M117 0V40M156 12V40M156 26A14 14 0 1 0 128 26A14 14 0 1 0 156 26M166 12V40M166 25A13 13 0 0 1 192 25V40M225.9 16.1A14 14 0 1 0 225.9 35.9M236.9 26H264.9A14 14 0 1 0 260.8 35.9" stroke="#ececec" stroke-width="4"/>
+</svg>

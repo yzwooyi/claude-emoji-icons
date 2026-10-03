@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="docs/logo-light.svg">
+    <img src="docs/logo.svg" alt="Glance" height="72">
+  </picture>
+</p>
+
 # Glance (a plugin for the Claude Code desktop app)
 
 Two things working together: a **reply style** that makes Claude write short paragraphs and mark each key point (conclusion, warning, verified result, and so on) with one of 24 markers, and **desktop line icons** that draw those markers as colored line icons, with a highlight line like `# ✅ **Conclusion**` drawn as a large heading. You need both enabled: install the plugin, then pick `glance-en` or `glance-zh` in `/output-style`.
