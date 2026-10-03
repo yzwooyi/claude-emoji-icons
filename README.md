@@ -1,50 +1,79 @@
-# emoji-icons（Claude Code 桌面版 mod）
+# Glance (a plugin for the Claude Code desktop app)
 
-把 Claude 回复里**段落开头**的 24 个标记 emoji 换成统一的细线图标；`# ✅ **结论**` 这种重点行画成大字。
-只改屏幕显示，不改对话原文；终端、代码块、句子中间的 emoji 都不动。
+Two things working together: a **reply style** that makes Claude write short paragraphs and mark each key point (conclusion, warning, verified result, and so on) with one of 24 markers, and **desktop line icons** that draw those markers as colored line icons, with a highlight line like `# ✅ **Conclusion**` drawn as a large heading. You need both enabled: install the plugin, then pick `glance-en` or `glance-zh` in `/output-style`.
+It only changes what is shown on screen, never the conversation text itself; the terminal, code blocks, and markers in the middle of a sentence are left alone.
 
-![装前 vs 装后](docs/before-after.png)
+![Default Claude vs With Glance](docs/before-after-en.png)
 
-## 安装（约 2 分钟）
+## Install (about 2 minutes)
 
-需要 Claude Code **2.1.286 或以上**（桌面版自带的就行）。
+Requires Claude Code **2.1.286 or later** (the version bundled with the desktop app is fine).
 
-1. 打开终端，运行：
-
-```bash
-claude plugin marketplace add yzwooyi/claude-emoji-icons
-```
-
-2. 再运行：
+1. Open a terminal and run:
 
 ```bash
-claude plugin install emoji-icons@jazper-share --scope user
+claude plugin marketplace add yzwooyi/claude-glance
 ```
 
-3. 打开 `~/.claude/settings.json`，在 `"env"` 里加一行（没有 `env` 就新建）：
+2. Then run:
+
+```bash
+claude plugin install glance@claude-glance --scope user
+```
+
+3. Open `~/.claude/settings.json` and add one line inside `"env"` (create `env` if it isn't there):
 
 ```json
 "env": { "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1" }
 ```
 
-4. 新开一个 Claude Code 会话。
+4. Start a new Claude Code session.
 
-以后更新：`claude plugin update emoji-icons@jazper-share`，再开新会话。
+To update later: `claude plugin update glance@claude-glance`, then start a new session.
 
-## 让 Claude 用这些 emoji
+## The 24 icons
 
-mod 只负责「换图标」，Claude 平时不会主动在段首用这些 emoji。插件已自带两个配合的回复风格，装好后在 Claude Code 里选用：终端里打开 `/config`，改 Output style；桌面版在设置里的输出风格里选。选 `emoji-icons-zh`（中文）或 `emoji-icons-en`（英文）即可。
+| marker | meaning |
+|---|---|
+| 🔴 | Red line / serious pitfall |
+| ⚠️ | Needs attention |
+| ✅ | Verified (actually tested) |
+| 📊 | Measured numbers |
+| 💡 | Conclusion / recommendation |
+| ❓ | I can't answer / you decide |
+| 🔧 | What I changed |
+| ⏳ | Waiting on a result / has a due date |
+| 👉 | You do this by hand |
+| 📎 | Deliverable (file / link) |
+| 🛡️ | Money / security path |
+| 📤 | Shipped (in effect) |
+| 🔍 | What I found |
+| 💬 | Why / how it works |
+| 🧪 | Tests |
+| 🐛 | Bug / error |
+| ⚙️ | Settings / config |
+| 📁 | File / location |
+| 🎨 | Design / look |
+| 💰 | Quota / cost |
+| 📅 | Date / point in time |
+| 🤖 | Subagents |
+| 🔗 | External link |
+| ↩️ | Revert / undo |
 
-### 不想换风格时的备选
+## Turning on the reply style
 
-只想让 Claude 用这 24 个 emoji、不换回复风格的话，把下面这段加进 `~/.claude/CLAUDE.md`：
+The plugin ships two reply styles that tell Claude when to use each of the 24 markers. After installing, pick one: in the terminal run `/output-style` (or open `/config` and change Output style); in the desktop app choose it under Output style in settings. Choose `glance-en` (English replies) or `glance-zh` (Chinese replies). Without one of these styles Claude won't use the markers, so there is nothing to draw.
+
+### Alternative if you don't want to change style
+
+To have Claude use these 24 markers without switching reply style, add this to `~/.claude/CLAUDE.md`:
 
 ```markdown
-## 回复里的重点标记
-真正的结论、发现、警告前面挂一个 emoji（放在段首），一个重点一个；过渡句不挂。只用这 24 个：
-🔴 红线/严重坑 · ⚠️ 需要注意 · ✅ 实测验证过 · 📊 量出来的数字 · 💡 结论/建议 · ❓ 要你定
-🔧 我改了什么 · ⏳ 等结果/到期日 · 👉 要你亲手做 · 📎 交付物（文件/链接） · 🛡️ 钱/安全相关 · 📤 已上线
-🔍 查到的发现 · 💬 为什么/原理 · 🧪 测试 · 🐛 bug/报错 · ⚙️ 设置 · 📁 文件位置
-🎨 设计/外观 · 💰 额度/花费 · 📅 日期 · 🤖 子代理 · 🔗 外部链接 · ↩️ 退回/撤销
-最重要的一句结论单独一行写成 `# ✅ **结论**`（每条回复最多 1–3 行）。
+## Key-point markers in replies
+Put one emoji at the start of a paragraph for a real conclusion, finding, or warning, one per point; none on transitional sentences. Use only these 24:
+🔴 red line / serious pitfall · ⚠️ needs attention · ✅ verified by actual testing · 📊 measured numbers · 💡 conclusion / recommendation · ❓ you decide
+🔧 what I changed · ⏳ waiting on a result / due date · 👉 you do this by hand · 📎 deliverable (file / link) · 🛡️ money / security · 📤 shipped
+🔍 what I found · 💬 why / how it works · 🧪 tests · 🐛 bug / error · ⚙️ settings · 📁 file location
+🎨 design / look · 💰 quota / cost · 📅 date · 🤖 subagents · 🔗 external link · ↩️ revert / undo
+Write the single most important conclusion on its own line as `# ✅ **Conclusion**` (at most 1–3 such lines per reply).
 ```

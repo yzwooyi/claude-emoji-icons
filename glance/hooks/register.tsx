@@ -71,8 +71,8 @@ function svg(icon: string, size: number, off: number): string {
 }
 
 // A heading is drawn as one picture (icon + 22px bold text): the Markdown element a
-// mod can use draws `#` smaller than the transcript's own heading (Jazper 2026-10-02:
-// "我要 4 个新 mod 的那样大"). Width is estimated per character; null = fall back.
+// mod can use draws `#` smaller than the transcript's own heading.
+// Width is estimated per character; null = fall back.
 const H_FONT = 22
 export function headingSvg(icon: string, md: string): { source: string; width: number; height: number; alt: string } | null {
   if (md.includes('\n')) return null
@@ -82,7 +82,7 @@ export function headingSvg(icon: string, md: string): { source: string; width: n
   for (const ch of plain) em += /[\u2e80-\uffef]/.test(ch) ? 1 : ch === ' ' ? 0.3 : 0.62
   if (em > 40) return null
   const i = ICONS[icon]!
-  // text starts at x=24, the same left edge as body text beside a 15px icon (Jazper 2026-10-02 "歪歪的")
+  // text starts at x=24, the same left edge as body text beside a 15px icon
   const width = Math.ceil(24 + em * H_FONT + 8)
   const height = 36
   const esc = plain.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')

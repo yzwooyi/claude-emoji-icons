@@ -1,12 +1,12 @@
 {
-  "name": "jazper-share",
-  "description": "Jazper's shareable Claude Code mods",
-  "owner": { "name": "Jazper" },
+  "name": "claude-glance",
+  "description": "Shareable Claude Code mods",
+  "owner": { "name": "yzwooyi" },
   "plugins": [
     {
-      "name": "emoji-icons",
-      "source": "./emoji-icons",
-      "description": "Desktop: turns the emoji that opens a paragraph into a clean line icon; # headings drawn large"
+      "name": "glance",
+      "source": "./glance",
+      "description": "A reply style + line icons that make Claude's key points visible at a glance"
     }
   ]
 }

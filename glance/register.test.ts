@@ -48,7 +48,7 @@ for (const surface of ['desktop', 'vscode'] as const) {
     on('ui.render', () => ({ type: 'engine', ref: 0 }) as any)
     register(on as any, {} as any)
     const ui = await $.ui.mount({
-      plugin: 'emoji-icons', surface, component: 'AssistantMessage',
+      plugin: 'glance', surface, component: 'AssistantMessage',
       props: { text: '# ✅ **好了**\n\n⚠️ 注意\n\n普通段 🔴 句中', isFirstOfReply: true },
     })
     const drawn = JSON.stringify(await ui.drawn())
@@ -67,7 +67,7 @@ test('回归: 没有 emoji 的文本、terminal 上，都走 next(e) 原样', as
   register(on as any, {} as any)
   for (const [surface, text] of [['desktop', '普通回复，句中 ✅ 不动'], ['terminal', '✅ 有 emoji 但在终端'], ['terminal', '# ✅ **x**']] as const) {
     const ui = await $.ui.mount({
-      plugin: 'emoji-icons', surface, component: 'AssistantMessage',
+      plugin: 'glance', surface, component: 'AssistantMessage',
       props: { text, isFirstOfReply: false },
     })
     const drawn = JSON.stringify(await ui.drawn())
@@ -82,7 +82,7 @@ test('desktop: 命中段的容器横排，第一个子元素是图标，文字�
   on('ui.render', () => ({ type: 'engine', ref: 0 }) as any)
   register(on as any, {} as any)
   const ui = await $.ui.mount({
-    plugin: 'emoji-icons', surface: 'desktop', component: 'AssistantMessage',
+    plugin: 'glance', surface: 'desktop', component: 'AssistantMessage',
     props: { text: '# ✅ **好了**\n\n⚠️ 注意\n\n普通段', isFirstOfReply: true },
   })
   const root: any = await ui.drawn()
